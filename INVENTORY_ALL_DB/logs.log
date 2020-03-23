@@ -1,0 +1,425 @@
+2020-02-15 22:23:59,741 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:23:59,747 p=17438 u=adaodbp1 |  PLAY [Play for create the inventories of all Oracle db] ************************************************************************************
+2020-02-15 22:23:59,761 p=17438 u=adaodbp1 |  TASK [Gathering Facts] *********************************************************************************************************************
+2020-02-15 22:24:02,302 p=17438 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:24:02,343 p=17438 u=adaodbp1 |  TASK [setup_structure : Get the date to setup the structure] *******************************************************************************
+2020-02-15 22:24:02,633 p=17438 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:24:02,674 p=17438 u=adaodbp1 |  TASK [setup_structure : set_fact] **********************************************************************************************************
+2020-02-15 22:24:02,696 p=17438 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:24:02,733 p=17438 u=adaodbp1 |  TASK [setup_structure : Create directory on /tmp/] *****************************************************************************************
+2020-02-15 22:24:03,229 p=17438 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:24:03,269 p=17438 u=adaodbp1 |  TASK [setup_structure : Create remote file's path] *****************************************************************************************
+2020-02-15 22:24:03,296 p=17438 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:24:03,335 p=17438 u=adaodbp1 |  TASK [setup_structure : Create file on the remote to store the sql query's output] *********************************************************
+2020-02-15 22:24:03,669 p=17438 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:24:03,713 p=17438 u=adaodbp1 |  TASK [deploy_template : Deploying template to remote that will be used as the executable] **************************************************
+2020-02-15 22:24:04,703 p=17438 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:24:04,747 p=17438 u=adaodbp1 |  TASK [deploy_template : Clean the template file that was deployed as a script on the remote] ***********************************************
+2020-02-15 22:24:05,207 p=17438 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:24:05,252 p=17438 u=adaodbp1 |  TASK [deploy_template : Deploy the template that will be used as the query file] ***********************************************************
+2020-02-15 22:24:05,968 p=17438 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:24:06,013 p=17438 u=adaodbp1 |  TASK [deploy_template : Execute the script to create the inventory] ************************************************************************
+2020-02-15 22:24:06,470 p=17438 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:24:06,510 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] *****************************************************************************************************
+2020-02-15 22:24:06,531 p=17438 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:24:06,573 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] *****************************************************************************************************
+2020-02-15 22:24:06,597 p=17438 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:24:06,643 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Fetching output to localhost] *********************************************************************************
+2020-02-15 22:24:07,077 p=17438 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:24:07,120 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] *****************************************************************************************************
+2020-02-15 22:24:07,136 p=17438 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:24:07,173 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] *****************************************************************************************************
+2020-02-15 22:24:07,190 p=17438 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:24:07,231 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Fetching sql query file that will be used to collect the info for the repport!] *******************************
+2020-02-15 22:24:07,661 p=17438 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:24:07,708 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Add spool path to sql query file] *****************************************************************************
+2020-02-15 22:24:08,007 p=17438 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:24:08,054 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Replacing open brackets for open curly braces] ****************************************************************
+2020-02-15 22:24:08,256 p=17438 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:24:08,301 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Replacing close brackets for close curly braces] **************************************************************
+2020-02-15 22:24:08,483 p=17438 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:24:08,524 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Add the end of spool path to sql query file] ******************************************************************
+2020-02-15 22:24:08,714 p=17438 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:24:08,756 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Rename original file of hosts to hosts2] **********************************************************************
+2020-02-15 22:24:08,943 p=17438 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:24:08,996 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : create hosts file] ********************************************************************************************
+2020-02-15 22:24:09,185 p=17438 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:24:09,233 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Run awk command to split just the server from hosts file] *****************************************************
+2020-02-15 22:24:09,451 p=17438 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:24:09,491 p=17438 u=adaodbp1 |  TASK [fetch_mail_inventory : Create file with all hosts that were excluded in the previous step] *******************************************
+2020-02-15 22:24:09,698 p=17438 u=adaodbp1 |  fatal: [sacvl1073 -> localhost]: FAILED! => {"changed": true, "cmd": "awk '{print$2}' /ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/inventories/inventory_collected_on2020-02-15_22:24:02.inv | grep -e 'ALT' -e 'AU' -e 'HKD' -e 'IBR' -e 'JZM' -e 'PNAN' -e 'SACN' -e 'SDB' -e 'SGD' -e 'SUZ' -e 'TIM' -e 'VRY' -e 'XX' -e 'f' -e 'itar' -e 'sacnb' >> \"/ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/inventories/excluded_vars\"", "delta": "0:00:00.010665", "end": "2020-02-15 22:24:09.667095", "msg": "non-zero return code", "rc": 1, "start": "2020-02-15 22:24:09.656430", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2020-02-15 22:24:09,698 p=17438 u=adaodbp1 |  NO MORE HOSTS LEFT *************************************************************************************************************************
+2020-02-15 22:24:09,699 p=17438 u=adaodbp1 |  PLAY RECAP *********************************************************************************************************************************
+2020-02-15 22:24:09,700 p=17438 u=adaodbp1 |  sacvl1073                  : ok=23   changed=15   unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:24:10,391 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:24:10,397 p=27183 u=adaodbp1 |  PLAY [Play to collect info for create the report] ******************************************************************************************
+2020-02-15 22:24:10,440 p=27183 u=adaodbp1 |  TASK [Gathering Facts] *********************************************************************************************************************
+2020-02-15 22:24:13,690 p=27183 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:24:13,736 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Creating directory to store needed files] ****************************************************************
+2020-02-15 22:24:14,301 p=27183 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:24:14,357 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Get the date for add it to the name of the result] *******************************************************
+2020-02-15 22:24:14,641 p=27183 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:24:14,691 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] ************************************************************************************************
+2020-02-15 22:24:14,719 p=27183 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:24:14,769 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Gathered db name hosted in server] ***********************************************************************
+2020-02-15 22:24:15,361 p=27183 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:24:15,408 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Deploying sql_query_template to remote that will be used as the sql_query_file] **************************
+2020-02-15 22:24:16,629 p=27183 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:24:16,678 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Deploying script_template to remote that will be used to execute the sql_query_file] *********************
+2020-02-15 22:24:17,622 p=27183 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:24:17,668 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Clean the template file that was deployed as a script on the remote] *************************************
+2020-02-15 22:24:18,291 p=27183 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:24:18,348 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Execute the script to collect the info for the report] ***************************************************
+2020-02-15 22:24:18,965 p=27183 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:24:19,013 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Wrriting db name in the file] ****************************************************************************
+2020-02-15 22:24:19,605 p=27183 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:24:19,655 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] ************************************************************************************************
+2020-02-15 22:24:19,672 p=27183 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:24:19,722 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Create a directory in Ansibles Server to store all outputs files] ****************************************
+2020-02-15 22:24:19,926 p=27183 u=adaodbp1 |  ok: [sacvl611 -> localhost]
+2020-02-15 22:24:19,973 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Fetching outputs into Ansible's Server in the directory that has been previously created] ****************
+2020-02-15 22:24:20,516 p=27183 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:24:20,569 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] ************************************************************************************************
+2020-02-15 22:24:20,597 p=27183 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:24:20,651 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Create final report file in the local server] ************************************************************
+2020-02-15 22:24:20,859 p=27183 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:24:20,914 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Mergin all files to create the final report] *************************************************************
+2020-02-15 22:24:21,129 p=27183 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:24:21,185 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : Deleting all outputs files that was fetched from its remote server] **************************************
+2020-02-15 22:24:21,394 p=27183 u=adaodbp1 |   [WARNING]: Consider using the file module with state=absent rather than running 'rm'.  If you need to use command because file is
+insufficient you can add 'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2020-02-15 22:24:21,394 p=27183 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:24:21,444 p=27183 u=adaodbp1 |  TASK [collect_info_from_servers : email] ***************************************************************************************************
+2020-02-15 22:24:21,798 p=27183 u=adaodbp1 |  ok: [sacvl611 -> localhost]
+2020-02-15 22:24:21,802 p=27183 u=adaodbp1 |  PLAY RECAP *********************************************************************************************************************************
+2020-02-15 22:24:21,802 p=27183 u=adaodbp1 |  sacvl611                   : ok=18   changed=11   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:33:21,639 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:33:21,644 p=130099 u=adaodbp1 |  PLAY [Play for create the inventories of all Oracle db] *************************************************************************************************************
+2020-02-15 22:33:21,659 p=130099 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:33:24,147 p=130099 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:33:24,188 p=130099 u=adaodbp1 |  TASK [setup_structure : Get the date to setup the structure] ********************************************************************************************************
+2020-02-15 22:33:24,515 p=130099 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:33:24,560 p=130099 u=adaodbp1 |  TASK [setup_structure : set_fact] ***********************************************************************************************************************************
+2020-02-15 22:33:24,585 p=130099 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:33:24,626 p=130099 u=adaodbp1 |  TASK [setup_structure : Create directory on /tmp/] ******************************************************************************************************************
+2020-02-15 22:33:25,126 p=130099 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:33:25,170 p=130099 u=adaodbp1 |  TASK [setup_structure : Create remote file's path] ******************************************************************************************************************
+2020-02-15 22:33:25,188 p=130099 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:33:25,225 p=130099 u=adaodbp1 |  TASK [setup_structure : Create file on the remote to store the sql query's output] **********************************************************************************
+2020-02-15 22:33:25,617 p=130099 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:33:25,663 p=130099 u=adaodbp1 |  TASK [deploy_template : Deploying template to remote that will be used as the executable] ***************************************************************************
+2020-02-15 22:33:26,689 p=130099 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:33:26,732 p=130099 u=adaodbp1 |  TASK [deploy_template : Clean the template file that was deployed as a script on the remote] ************************************************************************
+2020-02-15 22:33:27,219 p=130099 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:33:27,264 p=130099 u=adaodbp1 |  TASK [deploy_template : Deploy the template that will be used as the query file] ************************************************************************************
+2020-02-15 22:33:28,033 p=130099 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:33:28,094 p=130099 u=adaodbp1 |  TASK [deploy_template : Execute the script to create the inventory] *************************************************************************************************
+2020-02-15 22:33:28,563 p=130099 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:33:28,608 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] ******************************************************************************************************************************
+2020-02-15 22:33:28,634 p=130099 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:33:28,680 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] ******************************************************************************************************************************
+2020-02-15 22:33:28,706 p=130099 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:33:28,748 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Fetching output to localhost] **********************************************************************************************************
+2020-02-15 22:33:29,188 p=130099 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:33:29,231 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] ******************************************************************************************************************************
+2020-02-15 22:33:29,255 p=130099 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:33:29,299 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] ******************************************************************************************************************************
+2020-02-15 22:33:29,324 p=130099 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:33:29,369 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Fetching sql query file that will be used to collect the info for the repport!] ********************************************************
+2020-02-15 22:33:29,800 p=130099 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:33:29,840 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Add spool path to sql query file] ******************************************************************************************************
+2020-02-15 22:33:30,158 p=130099 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:33:30,204 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Replacing open brackets for open curly braces] *****************************************************************************************
+2020-02-15 22:33:30,401 p=130099 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:33:30,448 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Replacing close brackets for close curly braces] ***************************************************************************************
+2020-02-15 22:33:30,616 p=130099 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:33:30,660 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Add the end of spool path to sql query file] *******************************************************************************************
+2020-02-15 22:33:30,835 p=130099 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:33:30,876 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Rename original file of hosts to hosts2] ***********************************************************************************************
+2020-02-15 22:33:31,061 p=130099 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:33:31,102 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : create hosts file] *********************************************************************************************************************
+2020-02-15 22:33:31,295 p=130099 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:33:31,336 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Run awk command to split just the server from hosts file] ******************************************************************************
+2020-02-15 22:33:31,523 p=130099 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:33:31,567 p=130099 u=adaodbp1 |  TASK [fetch_mail_inventory : Create file with all hosts that were excluded in the previous step] ********************************************************************
+2020-02-15 22:33:31,746 p=130099 u=adaodbp1 |  fatal: [sacvl1073 -> localhost]: FAILED! => {"changed": true, "cmd": "awk '{print$2}' /ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/inventories/inventory_collected_on2020-02-15_22:33:24.inv | grep -e 'ALT' -e 'AU' -e 'HKD' -e 'IBR' -e 'JZM' -e 'PNAN' -e 'SACN' -e 'SDB' -e 'SGD' -e 'SUZ' -e 'TIM' -e 'VRY' -e 'XX' -e 'f' -e 'itar' -e 'sacnb' >> \"/ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/inventories/excluded_vars\"", "delta": "0:00:00.008079", "end": "2020-02-15 22:33:31.722253", "msg": "non-zero return code", "rc": 1, "start": "2020-02-15 22:33:31.714174", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2020-02-15 22:33:31,746 p=130099 u=adaodbp1 |  NO MORE HOSTS LEFT **************************************************************************************************************************************************
+2020-02-15 22:33:31,747 p=130099 u=adaodbp1 |  PLAY RECAP **********************************************************************************************************************************************************
+2020-02-15 22:33:31,747 p=130099 u=adaodbp1 |  sacvl1073                  : ok=23   changed=15   unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:33:32,442 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:33:32,448 p=9711 u=adaodbp1 |  PLAY [Play to collect info for create the report] *******************************************************************************************************************
+2020-02-15 22:33:32,491 p=9711 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:33:33,557 p=9711 u=adaodbp1 |   [ERROR]: User interrupted execution
+
+2020-02-15 22:35:50,218 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:35:50,224 p=114110 u=adaodbp1 |  PLAY [Play for create the inventories of all Oracle db] *************************************************************************************************************
+2020-02-15 22:35:50,238 p=114110 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:35:52,707 p=114110 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:35:52,749 p=114110 u=adaodbp1 |  TASK [setup_structure : Get the date to setup the structure] ********************************************************************************************************
+2020-02-15 22:35:53,063 p=114110 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:35:53,105 p=114110 u=adaodbp1 |  TASK [setup_structure : set_fact] ***********************************************************************************************************************************
+2020-02-15 22:35:53,125 p=114110 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:35:53,165 p=114110 u=adaodbp1 |  TASK [setup_structure : Create directory on /tmp/] ******************************************************************************************************************
+2020-02-15 22:35:53,674 p=114110 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:35:53,721 p=114110 u=adaodbp1 |  TASK [setup_structure : Create remote file's path] ******************************************************************************************************************
+2020-02-15 22:35:53,747 p=114110 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:35:53,788 p=114110 u=adaodbp1 |  TASK [setup_structure : Create file on the remote to store the sql query's output] **********************************************************************************
+2020-02-15 22:35:54,198 p=114110 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:35:54,245 p=114110 u=adaodbp1 |  TASK [deploy_template : Deploying template to remote that will be used as the executable] ***************************************************************************
+2020-02-15 22:35:55,314 p=114110 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:35:55,354 p=114110 u=adaodbp1 |  TASK [deploy_template : Clean the template file that was deployed as a script on the remote] ************************************************************************
+2020-02-15 22:35:55,860 p=114110 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:35:55,899 p=114110 u=adaodbp1 |  TASK [deploy_template : Deploy the template that will be used as the query file] ************************************************************************************
+2020-02-15 22:35:56,679 p=114110 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:35:56,722 p=114110 u=adaodbp1 |  TASK [deploy_template : Execute the script to create the inventory] *************************************************************************************************
+2020-02-15 22:35:57,207 p=114110 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:35:57,258 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] ******************************************************************************************************************************
+2020-02-15 22:35:57,285 p=114110 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:35:57,326 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] ******************************************************************************************************************************
+2020-02-15 22:35:57,350 p=114110 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:35:57,392 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Fetching output to localhost] **********************************************************************************************************
+2020-02-15 22:35:57,858 p=114110 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:35:57,903 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] ******************************************************************************************************************************
+2020-02-15 22:35:57,927 p=114110 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:35:57,970 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : set_fact] ******************************************************************************************************************************
+2020-02-15 22:35:57,992 p=114110 u=adaodbp1 |  ok: [sacvl1073]
+2020-02-15 22:35:58,030 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Fetching sql query file that will be used to collect the info for the repport!] ********************************************************
+2020-02-15 22:35:58,461 p=114110 u=adaodbp1 |  changed: [sacvl1073]
+2020-02-15 22:35:58,508 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Add spool path to sql query file] ******************************************************************************************************
+2020-02-15 22:35:58,831 p=114110 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:35:58,877 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Replacing open brackets for open curly braces] *****************************************************************************************
+2020-02-15 22:35:59,072 p=114110 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:35:59,120 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Replacing close brackets for close curly braces] ***************************************************************************************
+2020-02-15 22:35:59,352 p=114110 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:35:59,400 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Add the end of spool path to sql query file] *******************************************************************************************
+2020-02-15 22:35:59,615 p=114110 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:35:59,663 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Rename original file of hosts to hosts2] ***********************************************************************************************
+2020-02-15 22:35:59,880 p=114110 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:35:59,924 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : create hosts file] *********************************************************************************************************************
+2020-02-15 22:36:00,133 p=114110 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:36:00,180 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Run awk command to split just the server from hosts file] ******************************************************************************
+2020-02-15 22:36:00,403 p=114110 u=adaodbp1 |  changed: [sacvl1073 -> localhost]
+2020-02-15 22:36:00,448 p=114110 u=adaodbp1 |  TASK [fetch_mail_inventory : Create file with all hosts that were excluded in the previous step] ********************************************************************
+2020-02-15 22:36:00,691 p=114110 u=adaodbp1 |  fatal: [sacvl1073 -> localhost]: FAILED! => {"changed": true, "cmd": "awk '{print$2}' /ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/inventories/inventory_collected_on2020-02-15_22:35:53.inv | grep -e 'ALT' -e 'AU' -e 'HKD' -e 'IBR' -e 'JZM' -e 'PNAN' -e 'SACN' -e 'SDB' -e 'SGD' -e 'SUZ' -e 'TIM' -e 'VRY' -e 'XX' -e 'f' -e 'itar' -e 'sacnb' > \"/ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/inventories/excluded_vars\"", "delta": "0:00:00.008665", "end": "2020-02-15 22:36:00.651392", "msg": "non-zero return code", "rc": 1, "start": "2020-02-15 22:36:00.642727", "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
+2020-02-15 22:36:00,691 p=114110 u=adaodbp1 |  NO MORE HOSTS LEFT **************************************************************************************************************************************************
+2020-02-15 22:36:00,693 p=114110 u=adaodbp1 |  PLAY RECAP **********************************************************************************************************************************************************
+2020-02-15 22:36:00,693 p=114110 u=adaodbp1 |  sacvl1073                  : ok=23   changed=15   unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:36:01,385 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:36:01,391 p=121711 u=adaodbp1 |  PLAY [Play to collect info for create the report] *******************************************************************************************************************
+2020-02-15 22:36:01,433 p=121711 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:36:03,094 p=121711 u=adaodbp1 |   [ERROR]: User interrupted execution
+
+2020-02-15 22:40:28,964 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:40:28,970 p=38765 u=adaodbp1 |  PLAY [Play to collect info for create the report] *******************************************************************************************************************
+2020-02-15 22:40:29,009 p=38765 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:40:32,309 p=38765 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:40:32,355 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Creating directory to store needed files] *****************************************************************************************
+2020-02-15 22:40:32,959 p=38765 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:40:33,014 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Get the date for add it to the name of the result] ********************************************************************************
+2020-02-15 22:40:33,334 p=38765 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:40:33,383 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:40:33,408 p=38765 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:40:33,454 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Gathered db name hosted in server] ************************************************************************************************
+2020-02-15 22:40:34,064 p=38765 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:40:34,118 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Deploying sql_query_template to remote that will be used as the sql_query_file] ***************************************************
+2020-02-15 22:40:35,381 p=38765 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:40:35,432 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Deploying script_template to remote that will be used to execute the sql_query_file] **********************************************
+2020-02-15 22:40:36,450 p=38765 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:40:36,503 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Clean the template file that was deployed as a script on the remote] **************************************************************
+2020-02-15 22:40:37,143 p=38765 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:40:37,200 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Execute the script to collect the info for the report] ****************************************************************************
+2020-02-15 22:40:37,808 p=38765 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:40:37,859 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Wrriting db name in the file] *****************************************************************************************************
+2020-02-15 22:40:38,460 p=38765 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:40:38,513 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:40:38,537 p=38765 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:40:38,593 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Create a directory in Ansibles Server to store all outputs files] *****************************************************************
+2020-02-15 22:40:38,812 p=38765 u=adaodbp1 |  ok: [sacvl611 -> localhost]
+2020-02-15 22:40:38,866 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Fetching outputs into Ansible's Server in the directory that has been previously created] *****************************************
+2020-02-15 22:40:39,454 p=38765 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:40:39,507 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:40:39,533 p=38765 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:40:39,585 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Create final report file in the local server] *************************************************************************************
+2020-02-15 22:40:39,812 p=38765 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:40:39,868 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Mergin all files to create the final report] **************************************************************************************
+2020-02-15 22:40:40,077 p=38765 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:40:40,133 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : Deleting all outputs files that was fetched from its remote server] ***************************************************************
+2020-02-15 22:40:40,347 p=38765 u=adaodbp1 |   [WARNING]: Consider using the file module with state=absent rather than running 'rm'.  If you need to use command because file is insufficient you can add 'warn:
+false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2020-02-15 22:40:40,348 p=38765 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:40:40,397 p=38765 u=adaodbp1 |  TASK [collect_info_from_servers : email] ****************************************************************************************************************************
+2020-02-15 22:40:40,755 p=38765 u=adaodbp1 |  ok: [sacvl611 -> localhost]
+2020-02-15 22:40:40,759 p=38765 u=adaodbp1 |  PLAY RECAP **********************************************************************************************************************************************************
+2020-02-15 22:40:40,759 p=38765 u=adaodbp1 |  sacvl611                   : ok=18   changed=11   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:44:00,935 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:44:00,942 p=48610 u=adaodbp1 |  PLAY [Play to collect info for create the report] *******************************************************************************************************************
+2020-02-15 22:44:00,979 p=48610 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:44:03,099 p=48610 u=adaodbp1 |  ok: [sacvl789]
+2020-02-15 22:44:04,002 p=48610 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:44:09,534 p=48610 u=adaodbp1 |  ok: [sacvs572]
+2020-02-15 22:44:28,836 p=48610 u=adaodbp1 |  ok: [sacvs608]
+2020-02-15 22:44:28,882 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Creating directory to store needed files] *****************************************************************************************
+2020-02-15 22:44:29,349 p=48610 u=adaodbp1 |  ok: [sacvl789]
+2020-02-15 22:44:29,459 p=48610 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:44:29,683 p=48610 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:44:29,837 p=48610 u=adaodbp1 |  ok: [sacvs608]
+2020-02-15 22:44:29,892 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Get the date for add it to the name of the result] ********************************************************************************
+2020-02-15 22:44:30,227 p=48610 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:44:30,285 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:44:30,320 p=48610 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:44:30,423 p=48610 u=adaodbp1 |  ok: [sacvs572]
+2020-02-15 22:44:30,476 p=48610 u=adaodbp1 |  ok: [sacvs608]
+2020-02-15 22:44:30,491 p=48610 u=adaodbp1 |  ok: [sacvl789]
+2020-02-15 22:44:30,539 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Gathered db name hosted in server] ************************************************************************************************
+2020-02-15 22:44:31,012 p=48610 u=adaodbp1 |  changed: [sacvl789]
+2020-02-15 22:44:31,094 p=48610 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:44:31,341 p=48610 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:44:31,531 p=48610 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:44:31,586 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Deploying sql_query_template to remote that will be used as the sql_query_file] ***************************************************
+2020-02-15 22:44:32,433 p=48610 u=adaodbp1 |  changed: [sacvl789]
+2020-02-15 22:44:32,625 p=48610 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:44:33,048 p=48610 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:44:33,229 p=48610 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:44:33,283 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Deploying script_template to remote that will be used to execute the sql_query_file] **********************************************
+2020-02-15 22:44:33,915 p=48610 u=adaodbp1 |  changed: [sacvl789]
+2020-02-15 22:44:34,180 p=48610 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:44:34,661 p=48610 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:44:34,871 p=48610 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:44:34,923 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Clean the template file that was deployed as a script on the remote] **************************************************************
+2020-02-15 22:44:35,380 p=48610 u=adaodbp1 |  changed: [sacvl789]
+2020-02-15 22:44:35,515 p=48610 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:44:35,695 p=48610 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:44:35,766 p=48610 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:44:35,823 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Execute the script to collect the info for the report] ****************************************************************************
+2020-02-15 22:44:36,270 p=48610 u=adaodbp1 |  fatal: [sacvl789]: FAILED! => {"changed": true, "cmd": ["sh", "/tmp/ansible_inventory_resources/collect_info.sh"], "delta": "0:00:00.003654", "end": "2020-02-15 22:44:36.229283", "msg": "non-zero return code", "rc": 1, "start": "2020-02-15 22:44:36.225629", "stderr": "/tmp/ansible_inventory_resources/collect_info.sh: line 5: /export/home/oracle/.profile+asm: No such file or directory", "stderr_lines": ["/tmp/ansible_inventory_resources/collect_info.sh: line 5: /export/home/oracle/.profile+asm: No such file or directory"], "stdout": "", "stdout_lines": []}
+2020-02-15 22:44:36,379 p=48610 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:44:36,935 p=48610 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:44:37,263 p=48610 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:44:37,317 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Wrriting db name in the file] *****************************************************************************************************
+2020-02-15 22:44:37,937 p=48610 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:44:38,193 p=48610 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:44:38,222 p=48610 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:44:38,278 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:44:38,298 p=48610 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:44:38,350 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Create a directory in Ansibles Server to store all outputs files] *****************************************************************
+2020-02-15 22:44:38,557 p=48610 u=adaodbp1 |  ok: [sacvl611 -> localhost]
+2020-02-15 22:44:38,603 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Fetching outputs into Ansible's Server in the directory that has been previously created] *****************************************
+2020-02-15 22:44:39,161 p=48610 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:44:39,435 p=48610 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:44:39,642 p=48610 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:44:39,694 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:44:39,719 p=48610 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:44:39,772 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Create final report file in the local server] *************************************************************************************
+2020-02-15 22:44:39,995 p=48610 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:44:40,051 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Mergin all files to create the final report] **************************************************************************************
+2020-02-15 22:44:40,252 p=48610 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:44:40,309 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : Deleting all outputs files that was fetched from its remote server] ***************************************************************
+2020-02-15 22:44:40,533 p=48610 u=adaodbp1 |   [WARNING]: Consider using the file module with state=absent rather than running 'rm'.  If you need to use command because file is insufficient you can add 'warn:
+false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2020-02-15 22:44:40,533 p=48610 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:44:40,586 p=48610 u=adaodbp1 |  TASK [collect_info_from_servers : email] ****************************************************************************************************************************
+2020-02-15 22:44:41,037 p=48610 u=adaodbp1 |  ok: [sacvl611 -> localhost]
+2020-02-15 22:44:41,039 p=48610 u=adaodbp1 |  RUNNING HANDLER [collect_info_from_servers : Handler for a new directory on remote servers where the sql query to collect info for create the report will run] ******
+2020-02-15 22:44:41,099 p=48610 u=adaodbp1 |  ok: [sacvs572] => {
+    "msg": "A new directory has been created"
+}
+2020-02-15 22:44:41,103 p=48610 u=adaodbp1 |  PLAY RECAP **********************************************************************************************************************************************************
+2020-02-15 22:44:41,103 p=48610 u=adaodbp1 |  sacvl611                   : ok=18   changed=11   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:44:41,103 p=48610 u=adaodbp1 |  sacvl789                   : ok=7    changed=4    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:44:41,103 p=48610 u=adaodbp1 |  sacvs572                   : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:44:41,103 p=48610 u=adaodbp1 |  sacvs608                   : ok=10   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:48:08,635 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:48:08,641 p=77388 u=adaodbp1 |  PLAY [Play to collect info for create the report] *******************************************************************************************************************
+2020-02-15 22:48:08,680 p=77388 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:48:08,819 p=77388 u=adaodbp1 |  fatal: [sacvl216]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: \n     Access to this network and the information on it are\n     lawfully available only for approved purposes by employees\n     of Flex and other users authorized by Flex. If you are not\n     an employee of Flex or an authorized user, do not attempt \n     to log on. Other than where prohibited by law and subject \n     to legal requirements, Flex reserves the right to review\n     any information in any form on this network at any time.\n\nAUTHORIZED USE ONLY\n\n\nPermission denied (publickey,gssapi-keyex,gssapi-with-mic,password).", "unreachable": true}
+2020-02-15 22:48:08,849 p=77388 u=adaodbp1 |  fatal: [sacvl214]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: \n     Access to this network and the information on it are\n     lawfully available only for approved purposes by employees\n     of Flex and other users authorized by Flex. If you are not\n     an employee of Flex or an authorized user, do not attempt \n     to log on. Other than where prohibited by law and subject \n     to legal requirements, Flex reserves the right to review\n     any information in any form on this network at any time.\n\nAUTHORIZED USE ONLY\n\n\nPermission denied (publickey,gssapi-keyex,gssapi-with-mic,password).", "unreachable": true}
+2020-02-15 22:48:09,334 p=77388 u=adaodbp1 |   [ERROR]: User interrupted execution
+
+2020-02-15 22:48:12,496 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:48:12,502 p=79762 u=adaodbp1 |  PLAY [Play to collect info for create the report] *******************************************************************************************************************
+2020-02-15 22:48:12,540 p=79762 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:48:12,672 p=79762 u=adaodbp1 |  fatal: [sacvl216]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: \n     Access to this network and the information on it are\n     lawfully available only for approved purposes by employees\n     of Flex and other users authorized by Flex. If you are not\n     an employee of Flex or an authorized user, do not attempt \n     to log on. Other than where prohibited by law and subject \n     to legal requirements, Flex reserves the right to review\n     any information in any form on this network at any time.\n\nAUTHORIZED USE ONLY\n\n\nPermission denied (publickey,gssapi-keyex,gssapi-with-mic,password).", "unreachable": true}
+2020-02-15 22:48:12,692 p=79762 u=adaodbp1 |  fatal: [sacvl214]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: \n     Access to this network and the information on it are\n     lawfully available only for approved purposes by employees\n     of Flex and other users authorized by Flex. If you are not\n     an employee of Flex or an authorized user, do not attempt \n     to log on. Other than where prohibited by law and subject \n     to legal requirements, Flex reserves the right to review\n     any information in any form on this network at any time.\n\nAUTHORIZED USE ONLY\n\n\nPermission denied (publickey,gssapi-keyex,gssapi-with-mic,password).", "unreachable": true}
+2020-02-15 22:48:14,048 p=79762 u=adaodbp1 |  ok: [sacvl789]
+2020-02-15 22:48:15,449 p=79762 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:48:20,005 p=79762 u=adaodbp1 |  ok: [sacvs572]
+2020-02-15 22:48:22,748 p=79762 u=adaodbp1 |  ok: [sacvs608]
+2020-02-15 22:48:22,794 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Creating directory to store needed files] *****************************************************************************************
+2020-02-15 22:48:23,253 p=79762 u=adaodbp1 |  ok: [sacvl789]
+2020-02-15 22:48:23,358 p=79762 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:48:23,617 p=79762 u=adaodbp1 |  ok: [sacvs572]
+2020-02-15 22:48:23,683 p=79762 u=adaodbp1 |  ok: [sacvs608]
+2020-02-15 22:48:23,740 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Get the date for add it to the name of the result] ********************************************************************************
+2020-02-15 22:48:24,057 p=79762 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:48:24,114 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:48:24,152 p=79762 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:48:24,249 p=79762 u=adaodbp1 |  ok: [sacvs572]
+2020-02-15 22:48:24,305 p=79762 u=adaodbp1 |  ok: [sacvs608]
+2020-02-15 22:48:24,323 p=79762 u=adaodbp1 |  ok: [sacvl789]
+2020-02-15 22:48:24,372 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Gathered db name hosted in server] ************************************************************************************************
+2020-02-15 22:48:24,855 p=79762 u=adaodbp1 |  changed: [sacvl789]
+2020-02-15 22:48:24,927 p=79762 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:48:25,190 p=79762 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:48:25,310 p=79762 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:48:25,371 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Deploying sql_query_template to remote that will be used as the sql_query_file] ***************************************************
+2020-02-15 22:48:26,252 p=79762 u=adaodbp1 |  changed: [sacvl789]
+2020-02-15 22:48:26,438 p=79762 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:48:26,890 p=79762 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:48:26,962 p=79762 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:48:27,017 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Deploying script_template to remote that will be used to execute the sql_query_file] **********************************************
+2020-02-15 22:48:27,717 p=79762 u=adaodbp1 |  changed: [sacvl789]
+2020-02-15 22:48:27,982 p=79762 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:48:28,507 p=79762 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:48:28,532 p=79762 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:48:28,589 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Clean the template file that was deployed as a script on the remote] **************************************************************
+2020-02-15 22:48:29,040 p=79762 u=adaodbp1 |  changed: [sacvl789]
+2020-02-15 22:48:29,196 p=79762 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:48:29,406 p=79762 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:48:29,413 p=79762 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:48:29,468 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Execute the script to collect the info for the report] ****************************************************************************
+2020-02-15 22:48:29,917 p=79762 u=adaodbp1 |  fatal: [sacvl789]: FAILED! => {"changed": true, "cmd": ["sh", "/tmp/ansible_inventory_resources/collect_info.sh"], "delta": "0:00:00.002812", "end": "2020-02-15 22:48:29.869867", "msg": "non-zero return code", "rc": 1, "start": "2020-02-15 22:48:29.867055", "stderr": "/tmp/ansible_inventory_resources/collect_info.sh: line 5: /export/home/oracle/.profile+asm: No such file or directory", "stderr_lines": ["/tmp/ansible_inventory_resources/collect_info.sh: line 5: /export/home/oracle/.profile+asm: No such file or directory"], "stdout": "", "stdout_lines": []}
+2020-02-15 22:48:30,100 p=79762 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:48:30,575 p=79762 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:48:30,814 p=79762 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:48:30,868 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Wrriting db name in the file] *****************************************************************************************************
+2020-02-15 22:48:31,475 p=79762 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:48:31,687 p=79762 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:48:31,728 p=79762 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:48:31,784 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:48:31,810 p=79762 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:48:31,863 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Create a directory in Ansibles Server to store all outputs files] *****************************************************************
+2020-02-15 22:48:32,118 p=79762 u=adaodbp1 |  ok: [sacvl611 -> localhost]
+2020-02-15 22:48:32,174 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Fetching outputs into Ansible's Server in the directory that has been previously created] *****************************************
+2020-02-15 22:48:32,749 p=79762 u=adaodbp1 |  changed: [sacvl611]
+2020-02-15 22:48:33,065 p=79762 u=adaodbp1 |  changed: [sacvs572]
+2020-02-15 22:48:33,163 p=79762 u=adaodbp1 |  changed: [sacvs608]
+2020-02-15 22:48:33,218 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : set_fact] *************************************************************************************************************************
+2020-02-15 22:48:33,248 p=79762 u=adaodbp1 |  ok: [sacvl611]
+2020-02-15 22:48:33,304 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Create final report file in the local server] *************************************************************************************
+2020-02-15 22:48:33,521 p=79762 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:48:33,578 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Mergin all files to create the final report] **************************************************************************************
+2020-02-15 22:48:33,821 p=79762 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:48:33,877 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : Deleting all outputs files that was fetched from its remote server] ***************************************************************
+2020-02-15 22:48:34,119 p=79762 u=adaodbp1 |   [WARNING]: Consider using the file module with state=absent rather than running 'rm'.  If you need to use command because file is insufficient you can add 'warn:
+false' to this command task or set 'command_warnings=False' in ansible.cfg to get rid of this message.
+
+2020-02-15 22:48:34,120 p=79762 u=adaodbp1 |  changed: [sacvl611 -> localhost]
+2020-02-15 22:48:34,176 p=79762 u=adaodbp1 |  TASK [collect_info_from_servers : email] ****************************************************************************************************************************
+2020-02-15 22:48:34,657 p=79762 u=adaodbp1 |  ok: [sacvl611 -> localhost]
+2020-02-15 22:48:34,661 p=79762 u=adaodbp1 |  PLAY RECAP **********************************************************************************************************************************************************
+2020-02-15 22:48:34,661 p=79762 u=adaodbp1 |  sacvl214                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:48:34,662 p=79762 u=adaodbp1 |  sacvl216                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:48:34,662 p=79762 u=adaodbp1 |  sacvl611                   : ok=18   changed=11   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:48:34,662 p=79762 u=adaodbp1 |  sacvl789                   : ok=7    changed=4    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:48:34,662 p=79762 u=adaodbp1 |  sacvs572                   : ok=10   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:48:34,662 p=79762 u=adaodbp1 |  sacvs608                   : ok=10   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-02-15 22:53:11,121 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2020-02-15 22:53:11,127 p=1184 u=adaodbp1 |  PLAY [Play to collect info for create the report] *******************************************************************************************************************
+2020-02-15 22:53:11,167 p=1184 u=adaodbp1 |  TASK [Gathering Facts] **********************************************************************************************************************************************
+2020-02-15 22:53:11,324 p=1184 u=adaodbp1 |  fatal: [sacvl216]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: \n     Access to this network and the information on it are\n     lawfully available only for approved purposes by employees\n     of Flex and other users authorized by Flex. If you are not\n     an employee of Flex or an authorized user, do not attempt \n     to log on. Other than where prohibited by law and subject \n     to legal requirements, Flex reserves the right to review\n     any information in any form on this network at any time.\n\nAUTHORIZED USE ONLY\n\n\nPermission denied (publickey,gssapi-keyex,gssapi-with-mic,password).", "unreachable": true}
+2020-02-15 22:53:11,328 p=1184 u=adaodbp1 |  fatal: [sacvl214]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: \n     Access to this network and the information on it are\n     lawfully available only for approved purposes by employees\n     of Flex and other users authorized by Flex. If you are not\n     an employee of Flex or an authorized user, do not attempt \n     to log on. Other than where prohibited by law and subject \n     to legal requirements, Flex reserves the right to review\n     any information in any form on this network at any time.\n\nAUTHORIZED USE ONLY\n\n\nPermission denied (publickey,gssapi-keyex,gssapi-with-mic,password).", "unreachable": true}
+2020-02-15 22:53:12,082 p=1184 u=adaodbp1 |   [ERROR]: User interrupted execution
+

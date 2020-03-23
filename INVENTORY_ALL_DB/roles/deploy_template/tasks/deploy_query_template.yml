@@ -1,0 +1,5 @@
+#task -> Deploy inventories_query.j2 to remote as inventories_query.sql
+- name: Deploy the template that will be used as the query file
+  template:
+    src: inventories_query.j2
+    dest: "{{remote_query_path}}"

@@ -1,0 +1,9 @@
+---
+
+- name: Get IP from servers
+  hosts: test
+  tasks:
+  - name: Getting IP
+    ping:
+
+...

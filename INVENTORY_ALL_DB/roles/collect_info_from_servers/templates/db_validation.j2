@@ -1,0 +1,19 @@
+SPOOL {{result_sql_query_path}}
+set lines 200
+COL NAME        FOR A10
+COL LOG_MODE    FOR A15
+COL OPEN_MODE   FOR A20
+COL STATUS      FOR A15
+COL DATABASE_ROLE FOR A16
+alter session set nls_date_format = 'DD-MON-YYYY hh24:mi:ss';
+SELECT d.NAME, i.STATUS, d.DATABASE_ROLE, d.LOG_MODE, d.OPEN_MODE, i.STARTUP_TIME, sysdate DB_TIME,
+CASE
+WHEN (DATABASE_ROLE = 'PRIMARY' AND STATUS = 'OPEN') THEN 'Status from database is Ok'
+WHEN (DATABASE_ROLE = 'PHYSICAL STANDBY' AND OPEN_MODE = 'READ ONLY WITH APPLY' AND STATUS = 'OPEN') THEN 'Status from database is Ok'
+WHEN (DATABASE_ROLE = 'PHYSICAL STANDBY' AND OPEN_MODE = 'MOUNTED' AND STATUS = 'MOUNTED') THEN 'Status from database is Ok'
+ELSE 'Status from database is NOT_OK,  Please Check!!!' END DB_STATUS
+FROM V$DATABASE d,V$INSTANCE i ;
+
+
+SPOOL OFF;
+Exit

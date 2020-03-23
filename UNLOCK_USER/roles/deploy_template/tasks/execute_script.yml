@@ -1,0 +1,4 @@
+# task -> The template has been deployed and clean as an executable file (script), so, it is time to execute it
+- name: Execute the script to create the inventory
+  command: sh "{{remote_template_path}}"
+

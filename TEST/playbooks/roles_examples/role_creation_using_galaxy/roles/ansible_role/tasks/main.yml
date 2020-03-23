@@ -1,0 +1,5 @@
+---
+# tasks file for ansible_role
+- name: Installing a role using 
+  local_action: "command ansible-galaxy init created_with_galaxy --init-path /ansible/ESO/DataAnalyticsOps/Oracle/TEST/playbooks/roles_examples/role_creation_using_galaxy/roles "
+  

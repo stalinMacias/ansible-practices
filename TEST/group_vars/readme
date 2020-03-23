@@ -1,0 +1,5 @@
+Remember the structurue of how to define variables!
+
+- The name of the file must be the name of the group will be affected by the variables
+
+- Inside the file, the variables must be declared as if them were a dictionary ---> name: value

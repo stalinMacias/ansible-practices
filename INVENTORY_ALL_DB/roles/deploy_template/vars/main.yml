@@ -1,0 +1,20 @@
+---
+db_name: es1p1
+tmp_path: /tmp/ansible_logs
+local_folder: /ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/
+#local_template_path: "{{local_folder}}sql_query_template.j2"
+remote_template_path: "{{tmp_path}}/create_inventory.sh"
+remote_query_path: "{{tmp_path}}/inventories_query.sql"
+
+
+## Vars to complete the sql_queries_template.j2
+load_bash: "#! /bin/ksh"
+load_profile: ". ~/.profile{{db_name}}"
+
+run_sql_query: "$ORACLE_HOME/bin/sqlplus -s '/ as sysdba' @{{remote_query_path}}"
+
+remove_last_two_lines: "{ head -n -2 {{remote_file_path}}.lst;} > {{remote_file_path}}.inv"
+
+remove_not_useful_files: "rm {{remote_file_path}}; rm {{remote_file_path}}.lst"
+...
+

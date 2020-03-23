@@ -1,0 +1,9 @@
+---
+# Playbook to show the server's facts
+- name: Facts from Oracl Test Server
+  hosts: test
+  remote_user: oracle
+  
+  tasks:
+    - name: Show facts
+      debug: var=ansible_facts

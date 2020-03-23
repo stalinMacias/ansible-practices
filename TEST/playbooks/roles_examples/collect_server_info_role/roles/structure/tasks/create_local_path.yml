@@ -1,0 +1,13 @@
+---
+
+- name: Get current date
+  local_action: "command date '+%F_%T'"
+  register: current_date
+  run_once: true 
+
+- name: Create local file's path
+  set_fact:
+    local_file_path: "{{local_folder_path}}log_db_status_on_{{current_date.stdout}}"
+  run_once: true
+
+...

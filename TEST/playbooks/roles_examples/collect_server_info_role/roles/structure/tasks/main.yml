@@ -1,0 +1,7 @@
+---
+
+- import_tasks: create_local_path.yml
+- import_tasks: create_files_on_server.yml
+
+
+...

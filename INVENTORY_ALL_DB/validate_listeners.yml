@@ -1,0 +1,7 @@
+- name: Play to validate listeners
+  #hosts: all
+  hosts: eso_inventory
+  vars:
+  
+  tasks:
+  - name: 

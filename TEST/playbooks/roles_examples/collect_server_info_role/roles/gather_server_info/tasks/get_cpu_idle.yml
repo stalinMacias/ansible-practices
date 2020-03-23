@@ -1,0 +1,18 @@
+---
+
+- name: Get OS Server's Distribution
+  shell: "uname -a | awk '{print $1}'"
+  register: os_server_distribution
+
+- name: Get CPU idle percentage on Linux Servers
+  shell: "iostat -c | grep -v idle | awk '{print $6}' | sed 's/([0-9].*//g' | sed '/^$/d'"
+  register: linux_idle_cpu
+  when: os_server_distribution.stdout == "Linux"
+
+- name: Get CPU idle percentage on Servers which are not Linux [Solaris]
+  shell: "top | grep 'CPU states' | awk '{ print $3}'| cut -d '%' -f1"
+  register: solaris_idle_cpu
+  when: os_server_distribution.stdout != "Linux"
+
+
+...

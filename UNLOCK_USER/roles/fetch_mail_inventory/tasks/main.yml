@@ -1,0 +1,7 @@
+
+
+- import_tasks: fetch_output.yml 
+- import_tasks: fetch_sql_query_file.yml
+#- import_tasks: mail_output.yml
+
+- import_tasks: update_hosts.yml

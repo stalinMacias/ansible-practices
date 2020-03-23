@@ -1,0 +1,15 @@
+- set_fact:
+   final_name_file: "inventory_collected_on{{date}}.inv"
+  run_once: true
+
+- set_fact:
+    final_file_path: "{{local_folder}}inventories/{{final_name_file}}"
+  run_once: true
+
+# task -> Fetch the output into the localhost (Ansible's Server)
+- name: Fetching output to localhost
+  fetch:
+    src: "{{remote_file_path}}.inv"
+    dest: "{{final_file_path}}"
+    flat: yes
+                         

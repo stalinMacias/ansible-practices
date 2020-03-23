@@ -1,0 +1,12 @@
+- name: Deploying template to remote that will be used as the executable
+  template:
+    src: executable_template.j2 
+    dest: "{{remote_template_path}}"
+    mode: "0770"
+
+# task -> Clear the template file on the remote after it's deployed has finished
+- name: Clean the template file that was deployed as a script on the remote
+  replace:
+    path: "{{remote_template_path}}"
+    regexp: '"'
+    replace: ""

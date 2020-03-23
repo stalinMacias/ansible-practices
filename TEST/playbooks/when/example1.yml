@@ -1,0 +1,16 @@
+---
+# Play 1
+- name: Play to practice when statement
+  hosts: test
+  gather_facts: false
+  vars_files:
+    - vars.yml
+  # tasks
+  tasks:
+    # task 1
+    - name: Task
+      debug: 
+        msg: "{{item}}"
+      loop: 
+        - "{{listForTesting}}"
+      when: listForTesting is defined

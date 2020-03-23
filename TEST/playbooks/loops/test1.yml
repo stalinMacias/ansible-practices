@@ -1,0 +1,26 @@
+---
+#Play 1
+- name: Play to create some files using a loop module
+  hosts: test
+  vars_files:
+    - vars.yml
+  vars:
+    path: /export/home/oracle/
+  gather_facts: false
+  #tasks
+  tasks:
+    # task 1
+    - name: Create some directories using a loop module!
+      file:
+        path: "{{path}}{{item}}"
+        state: directory
+      loop: "{{directory_names}}"
+      notify:
+        - folders creation
+  
+  # handlers
+  handlers:
+  - name: Creation of folders
+    debug:
+      msg: "Folders have been created!"
+    listen: folders creation 

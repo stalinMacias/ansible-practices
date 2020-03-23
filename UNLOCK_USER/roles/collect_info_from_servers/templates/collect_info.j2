@@ -1,0 +1,22 @@
+# To see the values of the variables, check the vars folder of this role
+
+"{{load_bash}}"
+
+"{{load_profile}}"
+
+	"{{run_sql_query}}"
+
+# With all previous lines the scripts has already generated a file with the output of the sql query.... now its time to check if the status from the database is OK , otherwise, add the next message to the file: "Please contact DB Administrator, there is an error on DB: DB_NAME"
+#
+
+# Check if the next two words are present in the file....
+isOk=`cat "{{result_sql_query_path}}.lst" | grep "Ok" | wc -l`
+
+# Gather db_name from the file!
+#db_name=`cat "{{result_sql_query_path}}.lst" | head -3 | grep "\s" | awk '{print $5}'`
+
+# if $isOk is equals to 0 it means there are no errors on the database...
+if [ $isOk -ne 1 ]; then  echo "PLEASE CONTACT A DBA ADMINISTRATOR, THERE IS AN ERROR ON DB: {{db_name.stdout}}" >> "{{result_sql_query_path}}.lst"; else echo "Database: $db_name status is Ok" >> "{{result_sql_query_path}}.lst"; fi
+
+
+"{{add_splitting_line_to_file}}"

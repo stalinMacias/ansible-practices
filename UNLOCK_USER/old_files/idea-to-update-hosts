@@ -1,0 +1,16 @@
+1.- Rename the original hosts file    ---> mv hosts hosts_original
+2.- Create a new file with the second column of the inventory file         .....    awk '{print $2} inventories/inventory_file > hosts
+    Note: This file it will be created in the inventories folder!
+
+3.- Move the file created in step 2 to the the main folder where it is the original hosts file!	 mv hosts ../hosts
+    Note: At this point, the new hosts file has all the hosts where the next playbook will be executed
+
+
+4.- It is time to execute the next playbook in the shell script .... ansible-playbook next_playbook_to_run.yml
+5.- Once the next playbook finish its executin, its time to delete the new hosts file and rename the original hosts file!
+    rm hosts; mv hosts2 hosts
+
+6.- In theory, at this point, the second playbook has finish its execution and all data was collected correctly!
+
+
+

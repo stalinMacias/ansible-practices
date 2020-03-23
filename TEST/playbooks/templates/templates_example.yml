@@ -1,0 +1,24 @@
+---
+- name: Play to practice template's creation
+  hosts: test
+  # tasks
+  tasks:
+  # task 1
+  - name: Get the current user
+    command: whoami
+    register: user
+  - name: Send the template to the remote server
+    template:
+      src: /ansible/ESO/DataAnalyticsOps/Oracle/TEST/playbooks/templates/collected_info.j2
+      dest: /export/home/oracle/ansible_resources/
+    notify:
+      - template_sended
+  
+  # handlers
+  handlers:
+  - name: Handler of sending a template
+    debug:
+      msg: "A template has been sent to the remote!"
+    listen: "template_sended"
+
+...

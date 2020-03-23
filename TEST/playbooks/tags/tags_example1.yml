@@ -1,0 +1,134 @@
+---
+# Play 1
+- name: Play for retrieve a file from a Github repository!
+  hosts: test  
+  #gather_facts: false
+  vars:
+    folder_parent_path: /export/home/oracle/
+    folder_name: ansible_resources/
+    folder_path: "{{folder_parent_path}}{{folder_name}}"
+    file_name: ansible_requirements.txt
+  # tasks
+  tasks:
+  # Task 0
+  - name: Create a folder called ansible_resources on remote servers!
+    block:
+      - name: Creating folder on remote servers
+        file:
+          path: "{{folder_path}}"
+          state: directory
+        notify:
+          - folder creation
+    rescue:
+      - name: Rescue module on folder's creation task
+        debug: 
+          msg: "It seems that the folder creation went wrong!"
+    always:
+      - name: Folder creation attempt completed
+        debug: 
+          msg: "The folder creation attempt has been completed"
+  # Task 1
+  - name: Retrieve file from a repo
+    block: 
+      - name: Downloading file from repo to the server 
+        get_url:
+          url: https://raw.githubusercontent.com/ansible/ansible/devel/requirements.txt
+          dest: "{{folder_path}}{{file_name}}"
+        notify:
+          - file downloaded
+    rescue:
+      - name: Rescue module on file download task
+        debug:
+          msg: "It seems like Github is not available at the moment, please try it later!"
+    always:
+      - name: Always module
+        debug:
+          msg: "Attempt Completed"
+  # Task 2
+  - name: "Replacing # symbol with * "
+    replace:
+      path: "{{folder_path}}{{file_name}}"
+      regexp: "#"
+      replace: "*"
+    notify:
+      - replacing text
+ 
+  # handlers
+  handlers:
+  - name: Handler of the folder creation
+    debug: 
+      msg: "The handler of the folder creation has been triggered!"
+    listen: "folder creation"
+  - name: Handler of the file downloaded task
+    debug:
+      msg: "The file has been downloaded into the server!"
+    listen: "file downloaded"
+  - name: Handler of the replace task  
+    debug:
+      msg: "A file has been updated"
+    listen: "replacing text"
+  # tags
+  tags: 
+  - retrieve_file
+
+# Play 2
+- name: Play to copy a file from the remote to the local server!
+  hosts: test
+  gather_facts: false 
+  vars:
+    folder_name: ansible_resources/
+    file_name: ansible_requirements.txt
+    local_parent_folder: /ansible/ESO/DataAnalyticsOps/Oracle/TEST/
+    # final paths...
+    remote_file_path: "/export/home/oracle/{{folder_name}}{{file_name}}" 
+    local_file_path: "{{local_parent_folder}}{{folder_name}}{{file_name}}"
+  # tasks
+  tasks:
+  # task 1
+  - name: Create a folder on the local server
+    local_action: "file path={{local_parent_folder}}{{folder_name}} state=directory"
+    notify: folder creation
+  # task 2
+  - name: Fetching file from remote to local
+    block:
+      - fetch:
+          src: "{{remote_file_path}}"
+          dest: "{{local_file_path}}"  
+          # flat parameter is used to change the default behavior of the fetch module which copies all the remote tree directory!
+          flat: yes 
+        notify: file fetched
+    rescue:
+      - name: "Rescue module while fetching file"
+        debug:
+          msg: "something went wrong during the file transference from remote to local"
+    always:
+      - name: "Always module on the attempt to fetch a file from remote to local"
+        debug:
+          msg: "Attempt of fetching a file completed"
+  # task 3
+  - name: Verifying if the file it's on the local server
+    local_action: "stat path={{local_file_path}}"
+    register: result
+  
+  # task 4
+  - name: Result message
+    debug:
+      msg: "Everything is Ok"
+    when: result is succeeded
+
+  # handlers
+  handlers:
+  - name: Creation of a folder
+    debug: 
+      msg: "A folder has been created"
+    listen: "folder creation"
+ 
+  - name: Result of sent a file
+    debug:
+      msg: "A file has been sent to a remote host"
+    listen: "file fetched"
+  
+  # tags
+  tags:
+  - fetch_file
+...

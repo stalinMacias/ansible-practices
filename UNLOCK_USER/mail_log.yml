@@ -1,0 +1,39 @@
+- name: Play to send the play recap 
+  hosts: eso_inventory
+  vars: 
+    inventory_folder_path: /ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB
+  tasks:
+  
+  #- name: Splitting logs.log to create the file play_recap.log
+  #  local_action: shell cat logs.log | grep 'unreachable=0' > play_recap.log chdir="{{inventory_folder_path}}"
+  #  run_once: true
+
+  - name: Splitting play recap to create the unreach... log  file
+    local_action: shell cat logs.log | grep "unreachable=" |  grep -v 'unreachable=0' > unreachable_hosts.log chdir="{{inventory_folder_path}}"
+    run_once: true
+
+  - name: Splitting play recap to create the fail...  log file
+    local_action: shell cat logs.log | grep "failed=" | grep -v 'failed=0' > errors_on_hosts.log chdir="{{inventory_folder_path}}"
+    run_once: true
+
+  - name: Mailing log files
+    mail:
+     #to: stalin.macias@flex.com, luisarturo.gutierrezsanches@flex.com
+     #to: stalin.macias@flex.com, Teresita.Fletes@flex.com 
+      to: stalin.macias@flex.com
+      subject: Ansible - Oracle Licensing Report (Play Recap)
+      attach:
+        - "{{inventory_folder_path}}/unreachable_hosts.log"
+        - "{{inventory_folder_path}}/errors_on_hosts.log"
+    delegate_to: localhost
+    run_once: true
+
+  ###Cleaning the logs.log file for just send the play recap ####
+  - name: Deleting logs.log file
+    local_action: file path="{{inventory_folder_path}}/logs.log" state=absent
+    run_once: true
+
+  - name: Creating logs.log file
+    local_action: file path="{{inventory_folder_path}}/logs.log" state=touch
+    run_once: true
+

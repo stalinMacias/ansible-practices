@@ -1,0 +1,16 @@
+---
+- name: Testing first connection to Oracle's Test Server
+  hosts: test
+  gather_facts: no
+  #remote_user: oracle
+  
+  tasks:
+    - name: Get current user
+      command: whoami
+      register: whoami
+    - name: Result current user
+      #debug: msg="{{whoami.stdout_lines[0]}}"
+      debug: var=whoami.stdout
+    - name: Testing variable's usage!
+      debug: msg="if this message is displayed, it means the var's values are accesible!"
+      when: whoami.stdout_lines[0] == "oracle"

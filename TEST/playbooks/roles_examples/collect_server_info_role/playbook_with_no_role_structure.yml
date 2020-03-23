@@ -1,0 +1,74 @@
+---
+  # Auxiliar playbook before de_estructure it as a role
+- name: Preparing the directory structure
+  hosts: local
+  vars:
+    local_folder_path: /ansible/ESO/DataAnalyticsOps/Oracle/TEST/logs/
+    current_date: ""
+    local_file_path: ""
+  gather_facts: false
+
+  tasks:
+  - name: Get current date
+    local_action: "command date '+%F_%T'"
+    register: current_date
+    run_once: true
+
+  - name: Create local file's path
+    set_fact:
+      local_file_path: "{{local_folder_path}}log_db_status_on_{{current_date.stdout}}"
+    run_once: true
+
+  - name: Create the folder for saving future logs
+    local_action: "file path={{local_folder_path}} state=directory"
+    run_once: true        
+
+  - name: Create the file where the logs will be saved
+    local_action: "file path={{local_file_path}} state=touch"
+    run_once: true
+    
+  tags:
+    - structure
+  
+
+  #------------------------------------------------#
+- name: Gather info for insert into the logfile
+  hosts: test_various
+  vars:
+    db_name: ""
+  # tasks
+  tasks: 
+  - name: Getting DB's name on the server
+    shell: "ps -ef|grep pmon |grep -v grep |cut -d '_' -f3"
+    register: db_name
+
+  - name: Get server's name
+    command: hostname
+    register: server_name
+
+  - name: Get OS Server's Distribution
+    shell: "uname -a | awk '{print $1}'"
+    register: os_server_distribution
+
+  - name: Get CPU idle percentage on Linux Servers
+    shell: "iositat -c | grep -v idle | awk '{print $6}' | sed 's/([0-9].*//g' | sed '/^$/d'"
+    register: linux_idle_cpu
+    when: os_server_distribution.stdout == "Linux"
+ 
+  - name: Get CPU idle percentage on Servers which are not Linux [Solaris]
+    shell: "top | grep 'CPU states' | awk '{ print $3}'| cut -d '%' -f1"
+    register: solaris_idle_cpu
+    when: os_server_distribution.stdout != "Linux"
+
+  - name: Writting DB's name in a file when a db has been found in a LINUX server
+    local_action: "lineinfile path={{hostvars['localhost']['local_file_path']}} line='The server {{server_name.stdout}} it is running under a {{os_server_distribution.stdout}} OS and it contains the {{db_name.stdout}} database and it has a {{linux_idle_cpu.stdout}} %CPU idle '" 
+    when: os_server_distribution.stdout == "Linux"
+
+  - name: Writting DB's name in a file when a db has been found in a SOLARIS server
+    local_action: "lineinfile path={{hostvars['localhost']['local_file_path']}} line='The server {{server_name.stdout}} it is running under a {{os_server_distribution.stdout}} OS and it contains the {{db_name.stdout}} database and it has a {{solaris_idle_cpu.stdout}} %CPU idle '" 
+    when: os_server_distribution.stdout != "Linux"  
+  
+  tags:
+    - gather_info
+
+  

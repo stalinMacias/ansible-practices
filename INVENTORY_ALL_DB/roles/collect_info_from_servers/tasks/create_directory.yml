@@ -1,0 +1,33 @@
+- name: Creating directory to store needed files
+  file:
+    path: "{{remote_directory_for_sql_query}}"
+    state: directory
+  notify:
+    - directory_creation
+
+
+- name: Get the date for add it to the name of the result 
+  local_action: "command date '+%F_%T'"
+  register: current_date
+  run_once: true
+
+
+# Save in the facts the path of the result of running the sql query
+- set_fact:
+    result_sql_query_path: "{{remote_directory_for_sql_query}}/report_info_collected_on_{{current_date.stdout}}_from_server__{{ansible_hostname}}"
+
+#- name: Debugging sql_query_path
+#  debug: var=remote_sql_query_path
+
+- name: Create file on the remote to store the sql query's output
+  file:
+    path: "{{result_sql_query_path}}"
+    state: touch
+
+#################### Due to the ammount of servers, this playbook won't be structured completly as a role, otherwise, it'll take a considerable ammount of time to finish its execution #############################################
+
+- name: Deploying template to remote that will be used as the sql_query_file
+  template:
+    src: db_validation.j2
+    dest: "{{remote_directory_for_sql_query}}/db_validation.sql"
+             

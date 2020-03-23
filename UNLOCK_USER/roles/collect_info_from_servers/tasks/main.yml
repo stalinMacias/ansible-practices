@@ -1,0 +1,116 @@
+- name: Creating directory to store needed files
+  file:
+    path: "{{remote_directory_for_sql_query}}"
+    state: directory
+  notify:
+    - directory_creation
+
+
+- name: Get the date for add it to the name of the result
+  local_action: "command date '+%F_%T'"
+  register: current_date
+  run_once: true
+
+
+# Save in the facts the path of the result of running the sql query
+- set_fact:
+    result_sql_query_path: "{{remote_directory_for_sql_query}}/report_info_collected_on_{{current_date.stdout}}_from_server_{{ansible_hostname}}"
+
+#- name: Create file on the remote to store the sql query's output
+#  file:
+#    path: "{{result_sql_query_path}}"
+#    state: touch
+
+# There is no need to create a file before execute the sql query, the result it'll be saved in a file created by the spool command!
+
+###### Gathered db name before the deployment of the files ######
+- name: Gathered db name hosted in server
+  shell: ps -ef|grep pmon |grep -v grep |cut -d '_' -f3 | tr '[:upper:]' '[:lower:]'
+  register: db_name
+
+#- name: Debugging db_name
+#  debug: var=db_name.stdout
+
+#################### Due to the ammount of servers, this playbook won't be structured completly as a role, otherwise, it'll take a considerable ammount of time to finish its execution #############################################
+
+- name: Deploying sql_query_template to remote that will be used as the sql_query_file
+  template:
+    src: db_validation.j2
+    dest: "{{remote_directory_for_sql_query}}/db_validation.sql"
+
+- name: Deploying script_template to remote that will be used to execute the sql_query_file
+  template:
+    src: collect_info.j2
+    dest: "{{remote_directory_for_sql_query}}/collect_info.sh"
+    mode: "0770"
+
+
+# task -> Clear the template file on the remote after it's deployed has finished
+- name: Clean the template file that was deployed as a script on the remote
+  replace:
+    path: "{{remote_directory_for_sql_query}}/collect_info.sh"
+    regexp: '"'
+    replace: ""
+               
+###### Execute the script on the remote to run the sql query on each db ###
+#
+#task -> The template has been deployed and clean as an executable file (script), so, it is time to execute it
+- name: Execute the script to collect the info for the report
+  command: sh "{{remote_directory_for_sql_query}}/collect_info.sh"
+
+# Add the next message just to display the db_name
+- name: Wrriting db name in the file
+  lineinfile:
+    path: "{{result_sql_query_path}}.lst"
+    insertbefore: BOF
+    line: "\n\nInfo collected from Database: {{db_name.stdout}}\n"
+
+####################### Fetching the output of each server into the local server ####
+#### Prepare local server to receibe all the outputs files #####
+- set_fact:
+    reports_directory_path: "/ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/reports"
+  run_once: true
+
+- name: Create a directory in Ansibles Server to store all outputs files
+  local_action: file path="{{reports_directory_path}}" state=directory
+  run_once: true
+
+- name: Fetching outputs into Ansible's Server in the directory that has been previously created
+  fetch:
+    src: "{{result_sql_query_path}}.lst"
+    dest: "{{reports_directory_path}}/report_from_server_{{ansible_hostname}}"
+    flat: yes
+
+####### Merge all outputs files into a single file #########
+- set_fact:
+    final_report_file_path: "{{reports_directory_path}}/final_report_created_on{{current_date.stdout}}"
+  run_once: true
+
+- name: Create final report file in the local server
+  local_action: file path="{{final_report_file_path}}" state=touch
+  run_once: true
+
+- name: Mergin all files to create the final report
+  local_action: "shell cat {{reports_directory_path}}/report* > {{final_report_file_path}}"
+  run_once: true
+
+- name: Deleting all outputs files that was fetched from its remote server
+  local_action: "shell rm {{reports_directory_path}}/report*"
+  run_once: true
+
+
+##################### Mailing final report file ###################
+- name: email
+  mail:
+   #to: stalin.macias@flex.com, luisarturo.gutierrezsanchez@flex.com, david.banos@flex.com
+   #to: stalin.macias@flex.com, luisarturo.gutierrezsanches@flex.com
+    to: stalin.macias@flex.com, Teresita.Fletes@flex.com, luisarturo.gutierrezsanches@flex.com, david.banos@flex.com
+   #to: stalin.macias@flex.com
+    subject: Ansible - Oracle Licensing Report 
+    attach:
+      - "{{final_report_file_path}}"
+      #- "/ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/logs.log"
+  delegate_to: localhost
+  run_once: true
+
+

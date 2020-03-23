@@ -1,0 +1,12 @@
+---
+
+- name: Handler for the creation of a folder
+  debug: 
+    msg: "A folder has been created"
+  listen: "folder_creation"
+
+- name: Handler for the creation of a logfile
+  debug: 
+    msg: "The logfile has been created in the following path: {{local_file_path}}"
+  listen: "file_creation"
+...

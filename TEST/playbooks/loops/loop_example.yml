@@ -1,0 +1,18 @@
+---
+#Play 1
+- name: Basic example for the usage of the loop module with a list
+  hosts: test
+  vars_files:
+    - vars.yml
+  vars:
+    path: /export/home/oracle/
+  gather_facts: false
+  #tasks
+  tasks:
+    # task 1
+    - name: Printing the path for create some directories using the loop module!
+      debug:
+        msg: "{{path}}{{item}}"
+        # Notice that the keyword item is being used to refer at the item's list!
+      loop: "{{directory_names}}"
+        

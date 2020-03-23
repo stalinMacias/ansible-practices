@@ -1,0 +1,16 @@
+---
+
+- name: Writting DB's name in a file when a db has been found in a LINUX server
+  local_action: "lineinfile path={{logfile_path}} line='The server {{server_name.stdout}} it is running under a {{os_server_distribution.stdout}} OS and it contains the {{db_name.stdout}} database and it has a {{linux_idle_cpu.stdout}} %CPU idle '"
+  when: os_server_distribution.stdout == "Linux"
+  notify:
+    - write_on_log_file
+  no_log: true
+
+- name: Writting DB's name in a file when a db has been found in a SOLARIS server
+  local_action: "lineinfile path={{hostvars['localhost']['local_file_path']}} line='The server {{server_name.stdout}} it is running under a {{os_server_distribution.stdout}} OS and it contains the {{db_name.stdout}} database and it has a {{solaris_idle_cpu.stdout}} %CPU idle '"
+  when: os_server_distribution.stdout != "Linux"
+  notify:
+   - write_on_log_file
+  no_log: true
+...

@@ -1,0 +1,11 @@
+---
+
+- name: Getting DB's name on the server
+  shell: "ps -ef|grep pmon |grep -v grep |cut -d '_' -f3"
+  register: db_name
+
+- name: Get server's name
+  command: hostname
+  register: server_name
+
+...

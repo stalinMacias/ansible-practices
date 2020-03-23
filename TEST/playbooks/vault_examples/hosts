@@ -1,0 +1,12 @@
+
+[test_various]
+sacvs713
+sacvs315
+sacvs720
+sacvl611
+
+[test]
+sacvl611
+
+[local]
+localhost

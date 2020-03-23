@@ -1,0 +1,6 @@
+---
+- name: Play to create a role using a role
+  hosts: local
+  #gather_facts: false
+  roles:
+    - ansible_role 

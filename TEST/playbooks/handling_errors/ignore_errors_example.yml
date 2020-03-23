@@ -1,0 +1,31 @@
+---
+# Play for test ignore_errors module
+- name: ignore errors module
+  hosts: test
+  gather_facts: false
+  vars:
+    path: /export/home/oracle/ansible/
+    list:
+      - 1
+      - 2
+      - 3
+  
+  # tasks
+  tasks:
+    # task 1
+    - name: Task that will run with no errors 
+      file:
+        path: "{{path}}/created_using_a_loop"
+        state: absent
+      ignore_errors: true
+                          
+    - name: Task that will throw an error
+      file:
+        path: "This is not even a path"
+        state: absent
+      ignore_errors: true
+
+    - name: Task that will be executed after an error was thrown
+      debug:
+        msg: "It worked as expected"
+      ignore_errors: true

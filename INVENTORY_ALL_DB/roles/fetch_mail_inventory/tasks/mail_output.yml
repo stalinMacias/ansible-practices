@@ -1,0 +1,11 @@
+# task -> mailing the output
+- name: email
+  mail:
+   #to: stalin.macias@flex.com, luisarturo.gutierrezsanchez@flex.com, david.banos@flex.com
+    to: stalin.macias@flex.com, luisarturo.gutierrezsanchez@flex.com
+    subject: Ansible - Creating an inventory of all db availables
+    attach:
+      - "{{final_file_path}}"
+  delegate_to: localhost
+  run_once: true
+

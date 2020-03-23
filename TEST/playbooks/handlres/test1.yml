@@ -1,0 +1,19 @@
+---
+# Play 1
+- name: Create a folder
+  hosts: test
+  gather_facts: false
+  # Tasks
+  tasks:
+    - name: Task to create a folder
+      file:
+        path: /export/home/oracle/maked_since_ansible
+        state: directory
+      register: result
+      notify:
+        - folder creation
+  # Handlers
+  handlers:
+    - name: Handler when a folder has been created
+      debug: msg="Folder's output creation {{result}}"
+      listen: "folder creation"

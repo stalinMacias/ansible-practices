@@ -1,0 +1,23 @@
+---
+- name: Play for practice at module
+  hosts: test 
+  vars:
+    res_path: /export/home/oracle/ansible_resources
+    file_name: /at_results.log
+ 
+  #gather_facts: false
+  # tasks
+  tasks:
+  # task 1
+  - name: Schecule a command to execute in 2 minutes in the remote hosts
+    at:
+      command: echo "ran at `date`" >> "{{res_path}}{{file_name}}"
+      count: 2
+      units: minutes
+      unique: yes
+  # task 2
+  - name: Schedule a command to execute in 2 minutes in the local host
+    local_action: at command=df>>/ansible/ESO/DataAnalyticsOps/Oracle/TEST/playbooks/at_module/res_at.log count=3 units=minutes unique=yes
+    
+
+...

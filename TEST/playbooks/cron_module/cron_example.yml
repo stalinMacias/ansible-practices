@@ -1,0 +1,25 @@
+---
+- name: Basic example to add a job and some env vars at the crontab file
+  hosts: local
+  gather_facts: false
+  vars:
+    script_name: sample.sh
+  # tasks
+  tasks:
+  # task 1
+  - name: Add a job at crontab file that will execute a script every minute
+    local_action: "cron name=run_script minute=* job=./{{script_name}}"
+  #  cron:
+  #    name: "run_script"
+  #    minute: "*"
+  #    job: ./$BASE_PATH/"{{script_name}}"
+  - name: Creates an env var like BASE_PATH=/ansible/ESO/DataAnalyticsOps/Oracle/TEST/scripts on top of crontab
+    local_action: "cron name=HOME env=yes job=/ansible/ESO/DataAnalyticsOps/Oracle/TEST/scripts insertafter=SHELL"
+    #cron:
+    #  name: BASE_PATH
+    #  env: yes
+    #  job: /ansible/ESO/DataAnalyticsOps/Oracle/TEST/scripts
+  
+
+
+...

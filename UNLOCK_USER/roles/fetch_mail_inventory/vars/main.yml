@@ -1,0 +1,9 @@
+hosts_local_path: /ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/
+inventories_local_path: /ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/inventories/
+
+## Aux var
+spool_line_text: SPOOL [[result_sql_query_path]]
+
+
+
+excluded_hosts: "{{inventories_local_path}}excluded_vars"

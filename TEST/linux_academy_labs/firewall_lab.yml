@@ -1,0 +1,25 @@
+---
+name: Play to setup the server
+  hosts: all
+  become: true
+  tasks:
+  - name: Install elinks
+    action: yum name=elinks state=installed
+  - name: Install httpd
+    action: yum name=httpd state=installed
+  - name: Enable Apache on System reboot
+    service: name=httpd enabled=yes
+  - name: Start service httpd, if not started
+    service: name=httpd state=started
+  - name: Install firewalld
+    action: yum name=firewalld state=installed
+  - name: Enable firewalld on system reboot
+    service: name=firewalld enabled=yes
+  - name: Start service firewalld, if not started
+    service: name=firewalld state=started
+  - name: Enable firewalld for http
+    firewalld: service=http permanent=yes state=enabled
+  - name: Restart firewalld
+    service: name=firewalld state=restarted
+...
+

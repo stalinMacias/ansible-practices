@@ -1,0 +1,37 @@
+- name: Rename original file of hosts to hosts2
+  local_action: command mv "{{hosts_local_path}}hosts" "{{hosts_local_path}}hosts2" 
+
+- name: create hosts file
+  local_action:  file path="{{inventories_local_path}}hosts" state=touch
+
+- name: Run awk command to split just the server from hosts file
+  local_action: shell awk '{print$2}' {{final_file_path}} | grep -v -e 'ALT' -e 'AU' -e 'HKD' -e 'IBR' -e 'JZM' -e 'PNAN' -e 'SACN' -e 'SDB' -e 'SGD' -e 'SUZ' -e 'TIM' -e 'VRY' -e 'XX' -e 'f' -e 'itar' -e 'sacnb'
+  register: awk_result
+  run_once: true
+
+- name: Create file with all hosts that were excluded in the previous step
+  local_action: shell awk '{print$2}' {{final_file_path}} | grep -e 'ALT' -e 'AU' -e 'HKD' -e 'IBR' -e 'JZM' -e 'PNAN' -e 'SACN' -e 'SDB' -e 'SGD' -e 'SUZ' -e 'TIM' -e 'VRY' -e 'XX' -e 'f' -e 'itar' -e 'sacnb' > "{{excluded_hosts}}"
+  run_once: true
+
+
+- name: Create a new hosts file
+  local_action: file path="{{hosts_local_path}}hosts" state=touch
+
+- name: Write the name of the group which will wrapp all the hosts
+  #local_action: lineinfile path="{{hosts_local_path}}hosts" line="[all]\nsacvl402\nsacvl730\nsacvs632"
+  local_action: lineinfile path="{{hosts_local_path}}hosts" line="[all]"
+
+
+- name: write awk_result in the new hosts file, it has to be written after the name of the group
+  local_action: lineinfile path="{{hosts_local_path}}hosts" line="{{awk_result.stdout}}" insertafter="[all]"
+
+#- name: Remove all SACNT
+#  local_action: lineinfile path="{{hosts_local_path}}hosts" state=absent regexp="^SACNT"
+
+
+#- name: Remove all PNAN
+#  local_action: lineinfile path="{{hosts_local_path}}hosts" state=absent regexp="^PNAN"
+
+
+
+

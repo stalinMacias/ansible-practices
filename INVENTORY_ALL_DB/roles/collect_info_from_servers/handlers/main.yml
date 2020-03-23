@@ -1,0 +1,6 @@
+- name: Handler for a new directory on remote servers where the sql query to collect info for create the report will run
+  debug:
+    msg: "A new directory has been created"
+  listen: "directory_creation"
+
+

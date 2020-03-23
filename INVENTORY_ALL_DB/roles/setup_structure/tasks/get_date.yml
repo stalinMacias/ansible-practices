@@ -1,0 +1,9 @@
+- name: Get the date to setup the structure
+  local_action: "command date '+%F_%T'"
+  register: current_date
+  run_once: true
+
+# Save in the facts the curren current date
+- set_fact:
+      date: "{{current_date.stdout}}"
+

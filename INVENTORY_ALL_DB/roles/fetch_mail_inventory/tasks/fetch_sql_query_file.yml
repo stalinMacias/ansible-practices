@@ -1,0 +1,30 @@
+- set_fact:
+    remote_sql_query_file_path: "/export/home/oracle/db_validation.sql"
+  run_once: true
+
+- set_fact:
+    local_sql_query_file_path: "/ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/roles/collect_info_from_servers/templates/db_validation.j2"
+  run_once: true
+
+- name: Fetching sql query file that will be used to collect the info for the repport!
+  fetch:
+    src: "{{remote_sql_query_file_path}}" 
+    dest: "{{local_sql_query_file_path}}" 
+    flat: yes
+
+- name: Add spool path to sql query file
+  local_action: lineinfile path="{{local_sql_query_file_path}}" insertbefore=BOF line="{{spool_line_text}}"
+
+- name: Replacing open brackets for open curly braces
+  local_action: replace path="{{local_sql_query_file_path}}" regexp="\[" replace="{"
+
+- name: Replacing close brackets for close curly braces
+  local_action: replace path="{{local_sql_query_file_path}}" regexp="\]" replace="}"
+
+- name: Add the end of spool path to sql query file
+  local_action: lineinfile path="{{local_sql_query_file_path}}" insertbefore="Exit" line="SPOOL OFF;"
+  run_once: true
+
+
+
+

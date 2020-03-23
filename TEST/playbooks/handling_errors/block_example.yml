@@ -1,0 +1,51 @@
+---
+# Play for practice error handling using the block statement!
+- name: Practicing block statement
+  hosts: test
+  gather_facts: false
+  # tasks
+  tasks:
+    - name: Handling Errors using the block module alongside the rescue and always module
+      block:
+      - name: Creating a directory
+        file:
+          path: /export/home/oracle/testBlock
+          state: directory
+        register: directory_creation_result
+        notify: directory creation
+
+      # All tasks defined below this one which generated an error won't be executed! 
+      - name: Causing an error
+        command: /bin/false
+      
+      - name: Create a file after an error!
+        file:
+          path: /export/gome/oracle/testBlock/file.txt
+          state: touch
+        register: file_creation_result
+        notify: file creation
+
+      # When any task defined in the block statement fails, the rescue module will be triggered!
+      rescue:
+      - name: Rescue Module
+        debug: 
+          msg: "The rescue module has been triggered because some error was generated in the block module!"
+      
+      # All tasks defined in the always statement will be executed, either an error was generated or not!
+      always:
+      - debug:
+          msg: "This text always will be printed, it means, any task defined inside the always statement will be executed despite the possible errors that could be generated in the block statement!"
+    - name: Task out of the block's scope
+      debug: 
+        msg: "This task must be executed despite an error was or not generated in the tasks of the block statement!"
+  
+  handlers:
+    - name: Creation of a Directory [Handler]
+      debug: 
+        msg: "A directory has been created"
+      listen: directory creation
+
+    - name: Creation of a File [Handler]
+      debug: 
+        msg: "A file has been created"
+      listen: file creation

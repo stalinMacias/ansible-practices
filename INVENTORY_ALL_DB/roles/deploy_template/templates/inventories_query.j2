@@ -1,0 +1,56 @@
+SPOOL "{{remote_file_path}}"
+
+set lines 75
+set pages 750
+set heading off
+
+
+col DB_NAME for a15
+col DB_INSTANCE for a15
+col HOSTNAME for a15
+col PARENT for a15
+col DB_STATUS for a30
+col DB_Version  for a15
+
+select DB_NAME,HOSTNAME
+from "z_view_dbs"@MYSQL
+where DB_CLASS='Oracle'
+and DB_STATUS <> 'SHUTDOWN'
+and DB_STATUS <> 'STOPPED'
+and HOSTNAME not in ('GDLNT011','MLGNT075','LMENT062')
+and DB_NAME not in ('BWD',
+'BWP',
+'BWQ',
+'CSP',
+'CSD',
+'ECD',
+'ECP',
+'ECQ',
+'EPD',
+'EPP',
+'EPQ',
+'EPT',
+'ESP',
+'MCD',
+'MCP',
+'MCQ',
+'NMD',
+'NMP',
+'NMQ',
+'NWD',
+'PID',
+'PIP',
+'PIQ',
+'PR1',
+'SBD',
+'SBP',
+'SCD',
+'SCP',
+'SCQ',
+'SGP',
+'SRD',
+'SRP',
+'SRQ');
+
+SPOOL OFF
+quit; 

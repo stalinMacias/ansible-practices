@@ -1,0 +1,22 @@
+---
+- name: Play to unarchive a compressed file on the remote
+  hosts: test
+  vars_files:
+    - paths.yml
+  vars:
+    unarchive_name: unarchived_files
+  # tasks
+  tasks:
+  # task 1
+  - name: Create a folder where the compressed files will be decompressed
+    file:
+      path: "{{remote_file_path}}{{unarchive_name}}"
+      state: directory
+  # task 2
+  - name: Unarchiving a compressed file that is actually on the remote
+    unarchive:
+      src: "{{remote_file_path}}archive_file.tgz"
+      dest: "{{remote_file_path}}{{unarchive_name}}"
+      remote_src: yes
+
+...

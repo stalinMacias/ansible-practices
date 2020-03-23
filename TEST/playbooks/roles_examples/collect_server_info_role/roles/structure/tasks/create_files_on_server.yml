@@ -1,0 +1,15 @@
+---
+
+- name: Create the folder for saving future logs
+  local_action: "file path={{local_folder_path}} state=directory"
+  run_once: true
+  notify:
+   - folder_creation
+
+- name: Create the file where the logs will be saved
+  local_action: "file path={{local_file_path}} state=touch"
+  run_once: true
+  notify:
+   - file_creation
+
+...

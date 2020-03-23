@@ -1,0 +1,20 @@
+---
+- name: Play for create the structure for save the logs in the Ansible`s Server
+  hosts: local
+  gather_facts: false
+  roles:
+    - structure
+  
+# ------------------------#
+
+- name: Play for collect the info from the hosts defined in the inventory
+  hosts: test
+  roles:
+    - gather_server_info
+  
+  no_log: true
+
+# ------------------------#
+
+...
+

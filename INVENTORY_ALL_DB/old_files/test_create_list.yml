@@ -1,0 +1,13 @@
+- name: Play testing how to create a dinamic list
+  hosts: eso_inventory
+  tasks:
+  - set_fact:
+      list_hosts: "{{ list_hosts|default([]) + [item]}}"
+    with_items:
+      - "one"
+      - "two"
+      - "three"
+    #run_once: true
+
+  - name: Printing hosts's inventory
+    debug: var=list_hosts  

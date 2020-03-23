@@ -1,0 +1,7 @@
+---
+
+- include_tasks: get_db_and_server_name.yml
+- include_tasks: get_cpu_idle.yml
+- include_tasks: write_on_logfile.yml
+
+...

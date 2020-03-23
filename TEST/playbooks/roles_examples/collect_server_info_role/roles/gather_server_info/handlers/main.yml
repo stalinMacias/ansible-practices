@@ -1,0 +1,7 @@
+---
+
+- name: Handler when the logfile has been written
+  debug:
+    msg: "The log file has been written"
+  listen: "write_on_log_file"
+...

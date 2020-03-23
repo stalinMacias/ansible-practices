@@ -1,0 +1,13 @@
+remote_directory_for_sql_query: "/tmp/ansible_inventory_resources"
+#remote_sql_query_path: "{{remote_directory_for_sql_query}}/db_validation.sql"
+#
+#
+### Vars that will be used in the script  
+db_name: ""
+load_bash: "#! /bin/ksh"
+load_profile: ". ~/.profile{{db_name.stdout}}"
+
+run_sql_query: "$ORACLE_HOME/bin/sqlplus -s '/ as sysdba' @{{remote_directory_for_sql_query}}/db_validation.sql"
+
+add_splitting_line_to_file: "printf '\n============================================' >> {{result_sql_query_path}}.lst"
+

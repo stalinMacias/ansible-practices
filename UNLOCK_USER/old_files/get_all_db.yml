@@ -1,0 +1,83 @@
+---
+- name: Play to create an inventory of all the DB
+  hosts: eso_inventory
+  vars_files:
+    - /ansible/ESO/DataAnalyticsOps/Oracle/INVENTORY_ALL_DB/vars.yml
+  # tasks
+  tasks:
+  # task 1
+  - name: Get the date to setup the structure
+    local_action: "command date '+%F_%T'"
+    register: current_date
+    run_once: true
+  # task 2
+  - name: Create directory on /tmp/
+    file:
+      path: "{{tmp_path}}"
+      state: directory  
+    run_once: true
+   #notify: "folder creation" 
+
+  #task 3
+  - set_fact:
+      date: "{{current_date.stdout}}"
+  # task 4
+  - name: Create remote file's path
+    set_fact:
+      remote_file_path: "{{tmp_path}}/inventory_collected_on_{{date}}"
+    run_once: true 
+
+  # task 5
+  - name: Create file on the remote to store the sql query's output
+    file:
+      path: "{{remote_file_path}}"
+      state: touch
+    #notify: "file creation"
+
+  #######################################################################
+  ######################################################################
+  # task 6 -> Deploy template to remote
+  - name: Deploying template to remote that will be used as the executable
+    template:
+      src: "{{local_template_path}}"
+      dest: "{{remote_template_path}}"
+      mode: "0770"
+  #task 7 -> Deploy inventories_query.j2 to remote as inventories_query.sql
+  - name: Deploy the template that will be used as the query file
+    template:
+      src: "{{local_folder}}inventories_query.j2"
+      dest: "{{remote_query_path}}"
+  # task 8 -> Clear the template file on the remote after it's deployed has finished
+  - name: Clean the template file that was deployed as a script on the remote
+    replace:
+      path: "{{remote_template_path}}"
+      regexp: '"'
+      replace: ""
+  # task 9 -> The template has been deployed and clean as an executable file (script), so, it is time to execute it
+  - name: Execute the script to create the inventory
+    command: sh "{{remote_template_path}}"
+  ##########################################################################
+  #########################################################################
+  - set_fact:
+      final_file_path: "{{local_folder}}/inventories/inventory_collected_on_{{date}}.inv"
+    run_once: true
+  # task 10 -> Fetch the output into the localhost (Ansible's Server)
+  - name: Fetching output to localhost
+    fetch:
+      src: "{{remote_file_path}}.inv"
+      dest: "{{final_file_path}}"
+      flat: yes
+  # task 11 -> mailing the output
+  - name: email
+    mail:
+      #to: stalin.macias@flex.com, luisarturo.gutierrezsanchez@flex.com, david.banos@flex.com
+      to: stalin.macias@flex.com, luisarturo.gutierrezsanchez@flex.com
+      subject: Ansible - Creating an inventory of all db availables
+      attach:
+         - "{{final_file_path}}"
+    delegate_to: localhost
+    run_once: true
+
+
+
+...

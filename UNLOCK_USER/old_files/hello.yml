@@ -1,0 +1,5 @@
+- name: Play to say hello
+  hosts: all
+  tasks:
+  - name: Debuggin
+    debug: msg="Hello"

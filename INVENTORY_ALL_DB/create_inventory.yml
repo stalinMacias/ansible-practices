@@ -1,0 +1,12 @@
+- name: Play for create the inventories of all Oracle db
+  hosts: eso_inventory
+  roles:
+    - setup_structure
+    - deploy_template
+    - fetch_mail_inventory 
+    
+# The next lines are helpful to import a whole playbook, but this approach it won't solve the problem to add hosts while running a play, and at certain point make the playbook runs against those new hosts!  
+#- name: Testing if my idea works
+#  import_playbook: hello.yml
+
+# -------------------------------- #
